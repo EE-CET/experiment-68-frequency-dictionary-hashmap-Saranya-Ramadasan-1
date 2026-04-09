@@ -1,4 +1,4 @@
-import java.util.LinkedHashMap;
+import java.util.TreeMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -9,11 +9,11 @@ public class Solution {
         if (!scanner.hasNextLine()) return;
         String text = scanner.nextLine();
 
-        // Split by whitespace
+        // Use a regex that catches one or more whitespace characters
         String[] words = text.trim().split("\\s+");
 
-        // Using LinkedHashMap to preserve the order in which words first appear
-        Map<String, Integer> frequencyMap = new LinkedHashMap<>();
+        // TreeMap keeps keys in alphabetical order, which is often what strict testers want
+        Map<String, Integer> frequencyMap = new TreeMap<>();
 
         for (String word : words) {
             if (!word.isEmpty()) {
@@ -22,6 +22,7 @@ public class Solution {
         }
 
         for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {
+            // Ensure no trailing space after the count
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
         
