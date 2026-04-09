@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -9,9 +9,11 @@ public class Solution {
         if (!scanner.hasNextLine()) return;
         String text = scanner.nextLine();
 
-        String[] words = text.split("\\s+");
+        // Split by whitespace
+        String[] words = text.trim().split("\\s+");
 
-        Map<String, Integer> frequencyMap = new HashMap<>();
+        // Using LinkedHashMap to preserve the order in which words first appear
+        Map<String, Integer> frequencyMap = new LinkedHashMap<>();
 
         for (String word : words) {
             if (!word.isEmpty()) {
