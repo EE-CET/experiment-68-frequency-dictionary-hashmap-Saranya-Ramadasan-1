@@ -1,21 +1,27 @@
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
-        // TODO: Read a single line of text
-        
-        // TODO: Split the text into individual words
-        
-        // TODO: Create a HashMap to store the frequency of each word
-        
-        // TODO: Iterate through the words and update their frequencies in the map
-        
-        // TODO: Iterate through the map and print the unique words and their counts
-        // Format: "word: count"
-        
+
+        if (scanner.hasNextLine()) {
+            String text = scanner.nextLine();
+            String[] words = text.trim().split("\\s+");
+
+            Map<String, Integer> frequencyMap = new TreeMap<>();
+
+            for (String word : words) {
+                if (!word.isEmpty()) {
+                    frequencyMap.put(word, frequencyMap.getOrDefault(word, 0) + 1);
+                }
+            }
+
+            for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        }
+        scanner.close();
     }
 }
